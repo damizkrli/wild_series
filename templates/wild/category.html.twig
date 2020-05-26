@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Les séries du moment{% endblock %}
+
+{% block body %}
+    <h1>Listes des séries</h1>
+    {% for program in selectByCategory %}
+        <div class="row justify-content-around">
+        <div class="card col-3 m-3 p-0 border-0">
+            <img class="card-img-top" src="{{ program.poster }}" alt="{{ program.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ program.title }}</h5>
+                <h6>{{ category.name }}</h6>
+                <p class="card-text">{{ program.summary }}</p>
+            </div>
+            <div class="row-cols-2">
+                <a href="https://www.amazon.fr/S%C3%A9ries-TV-DVD-Blu-ray/s?rh=n%3A409468%2Cp_n_binding_browse-bin%3A383376011"
+                   target="_blank"
+                   class="btn btn-success">Vous le voulez ?</a>
+                <a class="btn btn-success" href="http://www.allocine.fr/series/">Vous aimez ?</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <a class="btn btn-success" href="{{ path('wild_home') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}

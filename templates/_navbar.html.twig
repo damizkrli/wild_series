@@ -1,11 +1,15 @@
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar">
     <div class="link">
-        Movie
+        <a class="btn btn-dark" href="#">Movies</a>
     </div>
     <div class="link">
-        Series
+        <a class="btn btn-dark" href="{{ path('wild_index') }}">Toutes les séries</a>
     </div>
     <div class="link">
-        Animation
+        <a class="btn btn-dark" href="{{ path('wild_category', { categoryName : 'horreur' } ) }}">Top 3 Series</a>
+    </div>
+    <div class="link">
+        <a class="btn btn-dark" type="submit" href="#">Animation</a>
     </div>
 </nav>
+

@@ -1,12 +1,9 @@
-@import "~bootstrap/scss/bootstrap";
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+@import "vars";
 
 body {
-    background-color: white;
+    background-color: $secondary-color;
+    margin: 0;
+    padding: 0;
 }
 
 .fa-tv {
@@ -14,9 +11,31 @@ body {
 }
 
 .navbar {
-    background-color: #CEB972;
+    background-color: $primary-color;
+    padding: 50px;
 }
 
 .footer {
-    background-color: #CEB972;
+    background-color: $primary-color;
+}
+
+h1 {
+    font-family: 'Sirin Stencil', cursive;
+    font-size: $principal-font;
+}
+
+a {
+    color: $a-link;
+    text-decoration: none;
+    font-size: $link-size;
+}
+
+a:hover {
+    text-decoration: none;
+    background-color: $secondary-color;
+    border-radius: 5px;
+}
+
+.card-body{
+    background-color: $secondary-color;
 }
