@@ -4,7 +4,9 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Episode;
 use App\Entity\Program;
+use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,11 +36,11 @@ class WildController extends AbstractController
     }
 
     /**
-     * Getting a program with a formatted slug for title
      *
      * @param string $slug The slugger
-     * @Route("/wild/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
+     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
      * @return Response
+     *
      */
     public function show(?string $slug):Response
     {
@@ -63,7 +65,7 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/wild/category/{categoryName}", name="wild_category")
+     * @Route("/category/{categoryName}", name="wild_category")
      * @param string $categoryName
      * @return Response
      */
@@ -90,4 +92,52 @@ class WildController extends AbstractController
             'category' => $category,
         ]);
     }
+
+    /**
+     * @param string $slug
+     * @Route("/showByProgram/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="showByProgram"))
+     * @return Response
+     */
+    public function showByProgram(string $slug): Response
+    {
+
+        $slug = str_replace("-", ' ', ucwords(trim(strip_tags($slug)), "-"));
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneByTitle($slug);
+
+        $seasons = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findBy(['program' => $program]);
+
+        return $this->render('wild/showByProgram.html.twig', [
+            'program' => $program,
+            'slug' => $slug,
+            'seasons' => $seasons,
+            ]);
+    }
+
+    /**
+     * @param int $id
+     * @Route("/showBySeason/{id}", requirements={"id"="\d+"}, name="showBySeason")
+     * @return Response
+     */
+    public function showBySeason(int $id): Response
+    {
+        $season = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findOneBy(['id' => $id]);
+
+        $episodes = $this->getDoctrine()
+            ->getRepository(Episode::class)
+            ->findBy(['season' => $id], ['id' => 'ASC',]);
+
+        return $this->render('wild/showBySeason.html.twig', [
+            'season' => $season,
+            'episodes' => $episodes,
+            'program' => $season->getProgram(),
+            ]);
+    }
+
+
 }

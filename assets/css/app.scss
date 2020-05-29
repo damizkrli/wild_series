@@ -39,3 +39,13 @@ a:hover {
 .card-body{
     background-color: $secondary-color;
 }
+
+.btn{
+    background-color: $primary-color;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: 100vh;
+}

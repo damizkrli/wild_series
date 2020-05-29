@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ program.title }}</h1>
+    {% for season in seasons %}
+        <div>
+            <p><a href="{{ path('showBySeason', {id: season.id}) }}">Saison {{ loop.index }} :</a> {{ season.description }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

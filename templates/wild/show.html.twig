@@ -8,7 +8,9 @@
     <div class="media">
         <img src="{{ program.poster }}" alt="{{ program.title }} poster" class="align-self-start mr-3">
         <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
+            <a href="{{ path('wild_show') }}">
+                <h1 class="mt-0">{{ program.title }} </h1>
+            </a>
             <p>{{ program.summary }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
         </div>
