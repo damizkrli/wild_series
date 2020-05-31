@@ -1,15 +1,16 @@
 <nav class="navbar">
-    <div class="link">
-        <a class="btn btn-dark" href="#">Movies</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" href="{{ path('wild_index') }}">Toutes les séries</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" href="{{ path('wild_category', { categoryName : 'horreur' } ) }}">Top 3 Series</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" type="submit" href="#">Animation</a>
-    </div>
+
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('wild_home') }}">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('wild_index') }}">Séries</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('category', { categoryName : 'horreur' } ) }}">Catégories</a>
+        </li>
+    </ul>
+
 </nav>
 

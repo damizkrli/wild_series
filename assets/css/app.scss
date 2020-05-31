@@ -1,22 +1,12 @@
 @import "vars";
 
-body {
-    background-color: $secondary-color;
-    margin: 0;
-    padding: 0;
-}
-
 .fa-tv {
     margin: 0;
 }
 
 .navbar {
     background-color: $primary-color;
-    padding: 50px;
-}
-
-.footer {
-    background-color: $primary-color;
+    padding: 15px;
 }
 
 h1 {
@@ -40,12 +30,20 @@ a:hover {
     background-color: $secondary-color;
 }
 
+.card-global  {
+    border-radius: 50px;
+}
+
+.dropdown-menu{
+    background-color: $primary-color;
+}
+
 .btn{
     background-color: $primary-color;
 }
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    height: 100vh;
+.logo {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
 }

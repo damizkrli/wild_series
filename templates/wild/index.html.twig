@@ -5,30 +5,28 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Toutes les séries</h1>
-    <div class="row justify-content-around m-0">
-        {% for program in programs %}
-            <div class="card col-3 m-3 p-0 border-0">
-                <img class="card-img-top" src="{{ program.poster }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ program.title }}</h5>
-                    <h6>Catégorie : {{ program.category.name }}</h6>
-                    <p class="card-text">{{ program.synopsis }}</p>
-                    <div class="row-cols-2">
-                    <a href="https://www.amazon.fr/S%C3%A9ries-TV-DVD-Blu-ray/s?rh=n%3A409468%2Cp_n_binding_browse-bin%3A383376011"
-                       target="_blank"
-                       class="btn btn-success">Vous le voulez ?</a>
-                        <a class="btn btn-success" href="http://www.allocine.fr/series/">Vous aimez ?</a>
+    <div class="container">
+        <h1 class="">Séries</h1>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-3">
+            {% for program in programs %}
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ program.title }}</h5>
+                            <p class="card-text">{{ program.category.name }}</p>
+                            <div>
+                                <a class="btn h-100" href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-        {% else %}
-            Aucune Série trouvée.
-        {% endfor %}
+            {% else %}
+                Aucune Série trouvée.
+            {% endfor %}
+        </div>
+        <a class="btn btn-success" href="{{ path('wild_home') }}">
+            Retour
+        </a>
     </div>
-    <a class="btn btn-success" href="{{ path('wild_home') }}">
-        Retour à l'accueil
-    </a>
 {% endblock %}
-

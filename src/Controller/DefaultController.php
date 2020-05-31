@@ -16,7 +16,6 @@ class DefaultController extends AbstractController
      */
     public function home() :Response
     {
-
         return $this->render('home.html.twig');
     }
 }
