@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="https://www.google.fr/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-zzggj&psig=AOvVaw2h1X411KJQyA0MHe7k0kBS&ust=1590574644653000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMDuq7mm0ekCFQAAAAAdAAAAABAD" />
+        <link rel="icon" href="" >
         {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
     </head>
     <body>
         {% include '_navbar.html.twig' %}
-        {% block body %}{% endblock %}
+        <div id="main">
+            {% block body %}{% endblock %}
+        </div>
         {% include '_footer.html.twig' %}
         {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
     </body>

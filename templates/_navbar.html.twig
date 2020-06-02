@@ -1,15 +1,22 @@
-<nav class="navbar">
-    <div class="link">
-        <a class="btn btn-dark" href="#">Movies</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" href="{{ path('wild_index') }}">Toutes les séries</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" href="{{ path('wild_category', { categoryName : 'horreur' } ) }}">Top 3 Series</a>
-    </div>
-    <div class="link">
-        <a class="btn btn-dark" type="submit" href="#">Animation</a>
+<nav class="navbar navbar-expand-lg">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link fas fa-house-user btn-outline-success" href="{{ path('wild_home') }}">Home</a>
+                <a class="nav-link fas fa-film btn-outline-success" href="{{ path('wild_index') }}">Series</a>
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle fas fa-search btn-outline-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Category</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('category', { categoryName : 'horreur' } ) }}">Horror</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Comedy</a>
+                </div>
+            </li>
+        </ul>
     </div>
 </nav>
-

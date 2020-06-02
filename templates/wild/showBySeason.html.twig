@@ -1,12 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1> {{ program.title }} </h1>
-    <h2>Saison {{ season.number }}</h2>
-    {% for episode in episodes %}
-    <div>
-        <h3><a href="">Episode {{ loop.index }}</a></h3>
-        <p>{{ episode.synopsis }}</p>
+    <div class="container">
+        <h1>{{ program.title }}</h1>
+        <div class="row justify-content-around">
+            {% for episode in episodes %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body 100-vh">
+                        <h6><a href="">Episode {{ loop.index }}</a></h6>
+                        <h5 class="card-title">Saison {{ episode.number }}</h5>
+                        <p class="card-text">{{ episode.synopsis }}</p>
+                    </div>
+                    <a href="{{ path('show_episode', {'slug': program.title | replace ({' ': '-'}), 'season_id' : season.id, 'episode_id': episode.id,}) }}" class="btn btn-sm btn-primary">Voir le détail</a>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="btn btn-success m-2" href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Retour</a>
     </div>
-    {% endfor %}
+
+
 {% endblock %}

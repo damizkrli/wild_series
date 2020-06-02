@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ program.title }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">{{ program.title }}</h1>
+
+    <div class="container-fluid ">
+        <div class="row-cols-1">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Season :{{ season.number }}</li>
+                    <li class="list-group-item">Release :{{ season.year }}</li>
+                    <li class="list-group-item">Episode :{{ episode.number }}</li>
+                    <li class="list-group-item">Category :{{ program.category.name }}</li>
+                </ul>
+                <div class="card-body">
+                    <h5 class="card-title">{{ episode.title }}</h5>
+                    <p class="card-text">{{ episode.synopsis }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-success m-2" href="">Retour</a>
+{% endblock %}

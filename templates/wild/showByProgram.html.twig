@@ -2,9 +2,19 @@
 
 {% block body %}
     <h1>{{ program.title }}</h1>
-    {% for season in seasons %}
-        <div>
-            <p><a href="{{ path('showBySeason', {id: season.id}) }}">Saison {{ loop.index }} :</a> {{ season.description }}</p>
-        </div>
-    {% endfor %}
+    <div class="container-fluid">
+        {% for season in seasons %}
+            <div class="card-body border m-5 h-100">
+                <p class="m-5">Saison {{ loop.index }}: </p>
+                <p class="card-body">{{ season.description }}</p>
+                <a class="btn btn-success m-2" href="{{ path('show_season', {'season_id': season.id}) }}">Retrouvez le
+                    Guide des
+                    épisodes de la Saison {{ loop.index }}</a>
+            </div>
+        {% endfor %}
+
+        <a class="btn btn-success m-2" href="{{ path('wild_index') }}">
+            Retour
+        </a>
+    </div>
 {% endblock %}
