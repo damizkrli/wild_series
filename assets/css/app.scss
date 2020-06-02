@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-.navbar {
+.nav {
     background-color: $primary-color;
     padding: 15px;
 }
@@ -22,7 +22,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    background-color: $secondary-color;
+    color: $secondary-color;
     border-radius: 5px;
 }
 
@@ -34,10 +34,6 @@ a:hover {
     border-radius: 50px;
 }
 
-.dropdown-menu{
-    background-color: $primary-color;
-}
-
 .btn{
     background-color: $primary-color;
 }
@@ -46,4 +42,14 @@ a:hover {
     display: flex;
     flex-direction: row-reverse;
     justify-content: end;
+}
+
+.footer{
+    background-color: $primary-color;
+}
+
+.welcome{
+    background-color: $secondary-color;
+    margin: 20px;
+    padding: 20px;
 }

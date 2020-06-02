@@ -5,28 +5,33 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="">Séries</h1>
-        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-3">
-            {% for program in programs %}
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ program.title }}</h5>
-                            <p class="card-text">{{ program.category.name }}</p>
-                            <div>
-                                <a class="btn h-100" href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
-                            </div>
+
+    {{ form_start(form) }}
+    {{ form_row(form.searchField) }}
+    <button type="submit" name="btnSearch">Search</button>
+    {{ form_end(form) }}
+
+    <div class="row row-cols-1 row-cols-md-4 row-cols-sm-3 p-5">
+        {% for program in programs %}
+            <div class="col mb-3">
+                <div class="card h-100">
+                    <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ program.title }}</h5>
+                        <p class="card-text">{{ program.category.name }}</p>
+                        <div>
+                            <a class="btn h-100"
+                               href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
                         </div>
                     </div>
                 </div>
-            {% else %}
-                Aucune Série trouvée.
-            {% endfor %}
-        </div>
-        <a class="btn btn-success" href="{{ path('wild_home') }}">
-            Retour
-        </a>
+            </div>
+        {% else %}
+            Aucune Série trouvée.
+        {% endfor %}
     </div>
+    <a class="btn btn-success" href="{{ path('wild_home') }}">
+        Retour
+    </a>
+
 {% endblock %}

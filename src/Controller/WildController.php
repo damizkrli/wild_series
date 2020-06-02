@@ -7,13 +7,14 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\ProgramSearchType;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
-use phpDocumentor\Reflection\Types\This;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -28,9 +29,11 @@ class WildController extends AbstractController
      * Show all rows from Program's entity
      *
      * @Route("/", name="wild_index")
+     * @param ProgramRepository $programRepository
+     * @param Request $request
      * @return Response
      */
-    public function index(): Response
+    public function index(ProgramRepository $programRepository, Request $request): Response
     {
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
@@ -41,9 +44,10 @@ class WildController extends AbstractController
                 'No program found in program\'s table.'
             );
         }
-        return $this->render('wild/index.html.twig',
-            ['programs' => $program]
-        );
+
+        return $this->render('wild/index.html.twig', [
+            'programs' => $program,
+            ]);
     }
 
     /**
@@ -155,11 +159,7 @@ class WildController extends AbstractController
      * @param SeasonRepository $seasonRepository
      * @return Response
      */
-    public function showEpisode(
-        int $season_id,
-        Episode $episode,
-        SeasonRepository $seasonRepository
-    ): Response
+    public function showEpisode(int $season_id, Episode $episode, SeasonRepository $seasonRepository): Response
     {
         $season = $seasonRepository->findOneBy(['id' => $season_id]);
 
@@ -169,4 +169,6 @@ class WildController extends AbstractController
             'program' => $season->getProgram(),
         ]);
     }
+
+
 }
