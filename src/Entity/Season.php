@@ -36,6 +36,7 @@ class Season
 
     /**
      * @ORM\ManyToOne(targetEntity=Program::class, inversedBy="seasons")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $program;
 
@@ -129,7 +130,6 @@ class Season
                 $episode->setSeason(null);
             }
         }
-
         return $this;
     }
 }

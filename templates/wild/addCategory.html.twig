@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
-    <h1 class="text-center">Add new category : </h1>
+    <main class="container">
+        <h1 class="text-center">Add new category : </h1>
+
         {{ form_start(form) }}
         {{ form_row(form.name) }}
-        <button class="btn btn-success">Add Category</button>
+        <button class="btn btn-success row-cols-2">Add Category</button>
         {{ form_end(form) }}
+    </main>
 
-        <p>Liste des Categories :</p>
-        {% for catego in category %}
-            <a href="">{{ catego.name }}</a>
-        {% endfor %}
-
-
+    <h1 class="text-center">List of categories :</h1>
+    <div class="container">
+        <div class="row justify-content-between p-5">
+            {% for catego in category %}
+                <a class="btn btn-success" href="">{{ catego.name }}</a>
+            {% endfor %}
+        </div>
     </div>
+
 {% endblock %}
