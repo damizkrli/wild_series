@@ -86,4 +86,9 @@ class Category
 
         return $this;
     }
+
+    public function getSelector(): string
+    {
+        return $this->getName() . ' - ' . $this->getId();
+    }
 }
