@@ -8,10 +8,17 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Montaga&display=swap');
 
+//Colors
 $primary-color: #5a5a51;
-$secondary-color: rgba(20, 54, 146, 0.7);
-$principal-font: 5rem;
+$secondary-color: rgba(20, 54, 146, 0.73);
 $a-link: black;
+
+//Font size
+$principal-font: 5rem;
 $link-size: 1.5rem;
+
+//Font type
 $title-font: 'Kanit', sans-serif;
-$text-font: 'Montaga', serif;;
+$text-font: 'Montaga', serif;
+
+$box-shadow: 0 0 3px;

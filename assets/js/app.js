@@ -26,3 +26,10 @@ $(document).ready(function() {
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
+let box = document.querySelector('.watch-js');
+if (box.value != null) {
+    document.getElementById('img').setAttribute('src', box.value);
+}
+box.addEventListener('change', function () {
+    document.getElementById('img').setAttribute('src', box.value);
+})

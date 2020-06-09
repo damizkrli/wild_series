@@ -3,33 +3,24 @@
 {% block title %}Program index{% endblock %}
 
 {% block body %}
-    <h1>Program index</h1>
 
-    <div class="container-fluid">
+    <div class="container">
+        <h2 class="mt-5 mb-5">Your Programs</h2>
         <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Poster</th>
-                    <th>Title</th>
-                    <th>Synopsis</th>
-                    <th>Country</th>
-                    <th>Year</th>
-                    <th>actions</th>
-                </tr>
-                </thead>
+            <table class="table col-6">
                 <tbody>
                 {% for program in programs %}
                     <tr>
-                        <td>{{ program.poster }}</td>
-                        <td>{{ program.title }}</td>
-                        <td>{{ program.synopsis }}</td>
-                        <td>{{ program.country }}</td>
-                        <td>{{ program.year }}</td>
                         <td>
-                            <a class="btn btn-outline-success"" href="{{ path('program_show', {'id': program.id}) }}">show</a>
-                            <a class="btn btn-outline-success"" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                            <img style="width: 100px" src="{{ program.poster }}" alt="{{ program.title }}">
                         </td>
+                        <td>
+                            <p>{{ program.title }}</p>
+                            <p>{{ program.country }}</p>
+                            <p>{{ program.year }}</p>
+                            <a class="btn btn-outline-success"
+                               href="{{ path('program_edit', {'id': program.id}) }}">Edit</a>
+                            {{ include('program/_delete_form.html.twig') }}
                     </tr>
                 {% else %}
                     <tr>
@@ -40,8 +31,10 @@
             </table>
         </div>
     </div>
-
-    <a class="btn btn-outline-success" href="{{ path('program_new') }}">Create new</a>
-    <a class="btn btn-outline-success" href="{{ path('admin') }}">Back</a>
-
+    <div class="container">
+        <div class="row p-5 justify-content-center ">
+            <a class="btn btn-outline-success" href="{{ path('program_new') }}">New Program</a>
+            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back To Menu</a>
+        </div>
+    </div>
 {% endblock %}

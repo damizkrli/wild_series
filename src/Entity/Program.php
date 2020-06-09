@@ -32,8 +32,14 @@ class Program
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      * @Assert\NotBlank(message="The program requires a short description")
+     * @Assert\Regex
+     * (
+     * pattern = "[plus belle la vie]i",
+     * match = false,
+     * message="We're talking about real shows here"
+     * )
      */
     private $synopsis;
 

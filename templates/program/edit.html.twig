@@ -1,15 +1,25 @@
 {% extends 'base.html.twig' %}
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 
 
 {% block title %}Edit Program{% endblock %}
 
 {% block body %}
     <h1>Edit Program</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 image-container mb-3">
+                <img id="img" src="" alt="image non disponible">
+            </div>
 
-    {{ include('program/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('program_index') }}">back to list</a>
+            <div class="col-md-8">
+                {{ include('program/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('program/_delete_form.html.twig') }}
+                <a href="{{ path('program_index') }}">back to list</a>
+
+                {{ include('program/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
