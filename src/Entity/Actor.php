@@ -2,17 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\ActorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=ActorRepository::class)
  */
-class Category
+class Actor
 {
     /**
      * @ORM\Id()
@@ -23,14 +21,11 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *     message="Please enter a category name."
-     * )
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Program::class, mappedBy="category")
+     * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
      */
     private $programs;
 
@@ -68,7 +63,6 @@ class Category
     {
         if (!$this->programs->contains($program)) {
             $this->programs[] = $program;
-            $program->setCategory($this);
         }
 
         return $this;
@@ -78,10 +72,6 @@ class Category
     {
         if ($this->programs->contains($program)) {
             $this->programs->removeElement($program);
-            // set the owning side to null (unless already changed)
-            if ($program->getCategory() === $this) {
-                $program->setCategory(null);
-            }
         }
 
         return $this;
@@ -89,6 +79,6 @@ class Category
 
     public function getSelector(): string
     {
-        return $this->getName() . ' - ' . $this->getId();
+        return $this->getId() . ' - ' . $this->getName();
     }
 }

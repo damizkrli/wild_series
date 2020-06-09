@@ -1,5 +1,19 @@
 @import "vars";
 
+img {
+    width: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+    min-height: 100%;
+}
+
 .fa-tv {
     margin: 0;
 }
@@ -10,7 +24,7 @@
 }
 
 h1 {
-    font-family: 'Sirin Stencil', cursive;
+    font-family: $title-font;
     font-size: $principal-font;
 }
 
@@ -18,6 +32,7 @@ a {
     color: $a-link;
     text-decoration: none;
     font-size: $link-size;
+    font-family: $text-font;
 }
 
 a:hover {
@@ -44,10 +59,6 @@ a:hover {
     justify-content: end;
 }
 
-.footer{
-    background-color: $primary-color;
-}
-
 .welcome{
     background-color: $secondary-color;
     margin: 20px;
@@ -58,3 +69,89 @@ a:hover {
     background-color: $secondary-color;
     height: 75px;
 }
+
+.footer{
+    background-color: $secondary-color;
+    bottom: 0;
+    margin-top: auto;
+}
+
+.nav-logo{
+    width: 70px;
+    height: 70px;
+}
+
+.slide{
+    width: 185vh;
+    height: 70vh;
+    margin: 25px;
+    padding-bottom: 25px;
+}
+
+.logo-footer{
+    width: 40px;
+    height: 40px;
+}
+
+.dropdown-menu{
+    background-color: $secondary-color;
+    color: white;
+    &:target{
+        outline: 0;
+    }
+    &:active{
+        outline: 0;
+    }
+
+}
+
+.btn{
+    background-color: inherit;
+}
+
+.dropdown-menu{
+    background-color: $secondary-color;
+
+    & .dropdown-item:hover{
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+}
+
+.image-container {
+    width: 100%;
+    height: auto;
+}
+#img {
+    text-align: center;
+    background-color: rgba(50, 48, 48, 0.7);
+    display: block;
+    height: auto;
+    border-radius: 5px;
+    min-height: 200px;
+    box-shadow: $box-shadow;
+}
+
+table{
+    display: flex;
+    justify-content: center;
+    border: 0;
+    border-collapse: collapse;
+}
+
+td{
+    border: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 900px){
+    table td{
+        display: block;
+    }
+
+}
+
+.list-group-item{
+    font-family: $title-font;
+}
+

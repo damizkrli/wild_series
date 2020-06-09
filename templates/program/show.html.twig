@@ -7,6 +7,11 @@
 
     <table class="table">
         <tbody>
+        <tr>
+            <td colspan="2">
+                <img style="width: 100px" src="{{ program.poster }}" alt="{{ program.title }}">
+            </td>
+        </tr>
             <tr>
                 <th>Title</th>
                 <td>{{ program.title }}</td>
@@ -16,16 +21,22 @@
                 <td>{{ program.synopsis }}</td>
             </tr>
             <tr>
-                <th>Poster</th>
-                <td>{{ program.poster }}</td>
-            </tr>
-            <tr>
                 <th>Country</th>
                 <td>{{ program.country }}</td>
             </tr>
             <tr>
                 <th>Year</th>
                 <td>{{ program.year }}</td>
+            </tr>
+            <tr>
+                <th>Actor</th>
+                <td>
+                    {% for actor in program.actors %}
+                        <a href="{{ path('actor_show', {"id":actor.id}) }}"> {{ actor.name }}, </a>
+                    {% else %}
+                        Aucun acteur pour cette série
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>
@@ -35,4 +46,5 @@
     <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
 
     {{ include('program/_delete_form.html.twig') }}
+
 {% endblock %}

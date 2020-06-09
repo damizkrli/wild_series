@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="mt-5 mb-5">Your Favourite Actors</h2>
+        <div class="row">
+            <table class="table col-6">
+                <tbody>
+                {% for actor in actors %}
+                    <tr>
+                        <td>{{ actor.name }}</td>
+                        <td>
+                            <a class="btn btn-outline-success" href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
+                            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row p-5 justify-content-center ">
+            <a class="btn btn-outline-success href="{{ path('actor_new') }}">Create new</a>
+            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back To Menu</a>
+        </div>
+    </div>
+
+{% endblock %}

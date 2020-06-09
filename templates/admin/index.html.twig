@@ -3,14 +3,17 @@
 {% block title %}Personnal Space{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Welcome to your personnal space</h1>
 
-    <div class="container justify-content-between">
-        <div class="row-cols-md-3">
-            <a class="nav-link fas fa-edit btn btn-outline-success" href="{{ path('category_index') }}">Add Category</a>
-            <a class="nav-link fas fa-edit btn btn-outline-success" href="{{ path('program_index') }}">Add Program</a>
-            <a class="nav-link fas fa-edit btn btn-outline-success" href="{{ path('season_index') }}">Add Season</a>
-            <a class="nav-link fas fa-edit btn btn-outline-success" href="{{ path('episode_index') }}">Add Episode</a>
+    <div class="container">
+        <div class="list-group">
+            <h2 class="mt-5 mb-5 ml-5 fas fa-door-open">Welcome to your personnal space </h2>
+            <a href="{{ path('category_index') }}" class="list-group-item list-group-item-action">Your Categories</a>
+            <a href="{{ path('program_index') }}" class="list-group-item list-group-item-action">Your Programs</a>
+            <a href="{{ path('season_index') }}" class="list-group-item list-group-item-action">Your Seasons</a>
+            <a href="{{ path('episode_index') }}" class="list-group-item list-group-item-action">Your Episodes</a>
+            <a href="{{ path('actor_index') }}" class="list-group-item list-group-item-action">Your Actors</a>
         </div>
     </div>
+
 {% endblock %}
+

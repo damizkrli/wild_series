@@ -1,16 +1,23 @@
-<nav class="navbar navbar-expand-lg">
-    <img src="public/build/images/logo_nvabar.jpg" alt="logo.png">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link fas fa-house-user btn btn-outline-success" href="{{ path('wild_home') }}">Home</a>
-                <a class="nav-link fas fa-film btn btn-outline-success" href="{{ path('wild_index') }}">Series</a>
-                <a class="nav-link fas fa-film btn btn-outline-success" href="{{ path('admin') }}">Admin</a>
-            </li>
+<nav class="navbar navbar-expand-lg h-100">
+    <div class="dropdown">
+        <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            <a href="{{ path('wild_home') }}">
+                <img class="" src="{{ asset('build/logo.png') }}" alt="logo.png">
+            </a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ path('wild_home') }}">Home</a>
+            <a class="dropdown-item" href="{{ path('wild_index') }}">Series</a>
+            <a class="dropdown-item" href="{{ path('admin') }}">Admin</a>
+        </div>
+    </div>
+    <h1 class="title ml-5">Bienvenue sur Wild Series</h1>
 
-{#                    <a class="dropdown-item" href="{{ path('index_add_category') }}">Add Category</a>#}
-{#                    <a class="dropdown-item" href="{{ path('category', { categoryName : 'horreur' } ) }}">Horror</a>#}
-                </div>
-
+{#        <div class="col-md-3">#}
+{#            <form class="form-inline my-2 my-lg-0">#}
+{#                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+{#                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+{#            </form>#}
+{#        </div>#}
 </nav>
-
