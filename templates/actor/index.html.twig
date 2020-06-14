@@ -12,7 +12,7 @@
                     <tr>
                         <td>{{ actor.name }}</td>
                         <td>
-                            <a class="btn btn-outline-success" href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
+                            <a class="btn btn-outline-success" href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
                             <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
                         </td>
                     </tr>
@@ -24,6 +24,10 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="navigation d-flex justify-content-center">
+        {{ knp_pagination_render(actors) }}
     </div>
 
     <div class="container">
