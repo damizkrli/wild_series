@@ -11,9 +11,9 @@
         <tbody>
         <tr>
             {% for program in actor.programs %}
-                <li>
-                    <a class="justify-content-center"
-                       href="{{ path('program_show', {"id":program.id}) }}">{{ program.title }}</a>
+                <li class="text-center">
+                    <a class="text-center justify-content-center"
+                       href="{{ path('program_show', {"slug":program.slug}) }}">{{ program.title }}</a>
                 </li>
             {% else %}
                 <li class="text-center m-5">
