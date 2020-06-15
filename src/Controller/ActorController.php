@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Actor;
 use App\Form\ActorType;
 use App\Repository\ActorRepository;
+use App\Service\MessagesFlash;
 use App\Service\Slugify;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,9 +44,14 @@ class ActorController extends AbstractController
      * @Route("/new", name="actor_new", methods={"GET","POST"})
      * @param Request $request
      * @param Slugify $slugify
+     * @param MessagesFlash $messagesFlash
      * @return Response
      */
-    public function new(Request $request, Slugify $slugify): Response
+    public function new(
+        Request $request,
+        Slugify $slugify,
+        MessagesFlash $messagesFlash
+    ): Response
     {
         $actor = new Actor();
         $form = $this->createForm(ActorType::class, $actor);
@@ -53,6 +59,7 @@ class ActorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $this->addFlash('create', $messagesFlash->create('actor'));
             $actor->setSlug($slugify->generate($actor->getName()));
             $entityManager->persist($actor);
             $entityManager->flush();
@@ -83,15 +90,22 @@ class ActorController extends AbstractController
      * @param Request $request
      * @param Actor $actor
      * @param Slugify $slugify
+     * @param MessagesFlash $messagesFlash
      * @return Response
      */
-    public function edit(Request $request, Actor $actor, Slugify $slugify): Response
+    public function edit(
+        Request $request,
+        Actor $actor,
+        Slugify $slugify,
+        MessagesFlash $messagesFlash
+    ): Response
     {
         $form = $this->createForm(ActorType::class, $actor);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $actor->setSlug($slugify->generate($actor->getName()));
+            $this->addFlash('update', $messagesFlash->update('actor'));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('actor_index');
@@ -104,13 +118,22 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="actor_delete", methods={"DELETE"})
+     * @Route("/{slug}", name="actor_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Actor $actor
+     * @param MessagesFlash $messagesFlash
+     * @return Response
      */
-    public function delete(Request $request, Actor $actor): Response
+    public function delete(
+        Request $request,
+        Actor $actor,
+        MessagesFlash $messagesFlash
+): Response
     {
         if ($this->isCsrfTokenValid('delete'.$actor->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($actor);
+            $this->addFlash('delete', $messagesFlash->delete('actor'));
             $entityManager->flush();
         }
 

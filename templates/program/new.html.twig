@@ -7,7 +7,10 @@
     <h1 class="text-center">Create new Program</h1>
     <div class="container-fluid">
         {{ include('program/_form.html.twig') }}
-
-        <a class="btn btn-success" href="{{ path('program_index') }}">back to list</a>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <a class="btn btn-outline-success m-5" href="{{ path('program_index') }}">Back to list</a>
+        </div>
     </div>
 {% endblock %}

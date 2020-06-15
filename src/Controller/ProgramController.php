@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Program;
 use App\Form\ProgramType;
 use App\Repository\ProgramRepository;
+use App\Service\MessagesFlash;
 use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,9 +36,16 @@ class ProgramController extends AbstractController
      * @Route("/new", name="program_new", methods={"GET","POST"})
      * @param Request $request
      * @param Slugify $slugify
-     * @return Response
+     * @param MailerInterface $mailer
+     * @param MessagesFlash $messagesFlash
+     * @return void
      */
-    public function new(Request $request, Slugify $slugify): Response
+    public function new(
+        Request $request,
+        Slugify $slugify,
+        MailerInterface $mailer,
+        MessagesFlash $messagesFlash
+): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -43,8 +54,19 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $program->setSlug($slugify->generate($program->getTitle()));
+            $this->addFlash('create', $messagesFlash->create('program'));
             $entityManager->persist($program);
             $entityManager->flush();
+
+            $email = (new Email())
+                ->from('karli.damien@gmail.com')
+                ->to('karli.damien@gmail.com')
+                ->subject('A new series has just been published')
+                ->html($this->renderView('program/email/notification.html.twig', [
+                    'program' => $program,
+                    ]), 'utf-8');
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('program_index');
         }
@@ -56,7 +78,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="program_show", methods={"GET"})
+     * @Route("/{slug}", name="program_show", methods={"GET"})
      * @param Program $program
      * @return Response
      */
@@ -72,9 +94,15 @@ class ProgramController extends AbstractController
      * @param Request $request
      * @param Program $program
      * @param Slugify $slugify
+     * @param MessagesFlash $messagesFlash
      * @return Response
      */
-    public function edit(Request $request, Program $program, Slugify $slugify): Response
+    public function edit(
+        Request $request,
+        Program $program,
+        Slugify $slugify,
+        MessagesFlash $messagesFlash
+    ): Response
     {
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
@@ -82,6 +110,7 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $program->setSlug($slugify->generate($program->getTitle()));
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', $messagesFlash->update('program'));
 
             return $this->redirectToRoute('program_index');
         }
@@ -93,17 +122,20 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="program_delete", methods={"DELETE"})
+     * @Route("/{slug}", name="program_delete", methods={"DELETE"})
      * @param Request $request
      * @param Program $program
+     * @param MessagesFlash $messagesFlash
      * @return Response
      */
-    public function delete(Request $request, Program $program): Response
+    public function delete(Request $request, Program $program, MessagesFlash $messagesFlash): Response
     {
         if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $this->addFlash('delete', $messagesFlash->delete('program'));
             $entityManager->remove($program);
             $entityManager->flush();
+
         }
 
         return $this->redirectToRoute('program_index');

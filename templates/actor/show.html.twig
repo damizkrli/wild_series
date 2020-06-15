@@ -3,29 +3,32 @@
 {% block title %}Actor{% endblock %}
 
 {% block body %}
-    <h1>Actor</h1>
+
+    <h1 class="text-center m-5">{{ actor.name }}</h1>
+
 
     <table class="table">
         <tbody>
         <tr>
-            <th>Name</th>
-            <td>{{ actor.name }}</td>
-        </tr>
-        <tr>
             {% for program in actor.programs %}
-                <li>
-                    <a href="{{ path('program_show', {"id":program.id}) }}">{{ program.title }}</a>
+                <li class="text-center">
+                    <a class="text-center justify-content-center"
+                       href="{{ path('program_show', {"slug":program.slug}) }}">{{ program.title }}</a>
                 </li>
             {% else %}
-                'No serie for this actor
+                <li class="text-center m-5">
+                    No shows for this actor
+                </li>
             {% endfor %}
         </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('actor_index') }}">back to list</a>
-
-    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
-
-    {{ include('actor/_delete_form.html.twig') }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <a class="btn btn-outline-success" href="{{ path('actor_index') }}">Back to list</a>
+            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
+        </div>
+        {{ include('actor/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
