@@ -22,12 +22,6 @@ class ProgramType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('year', IntegerType::class, [
-                'label' => 'year'
-            ])
-            ->add('country', TextType::class, [
-                'label' => 'country'
-            ])
             ->add('title',
                 TextType::class, [
                     'label' => 'Title'
@@ -46,13 +40,20 @@ class ProgramType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'label' => 'Catégory'
+                'label' => 'Category'
             ])
             ->add('actors', EntityType::class, [
                 'class' => Actor::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'expanded' => true,
                 'label' => 'Acteurs',
+            ])
+            ->add('year', IntegerType::class, [
+                'label' => 'Year'
+            ])
+            ->add('country', TextType::class, [
+                'label' => 'Country'
             ]);
 
 

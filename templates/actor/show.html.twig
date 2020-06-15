@@ -22,10 +22,11 @@
         </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('actor_index') }}">back to list</a>
-
-    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
-
-    {{ include('actor/_delete_form.html.twig') }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <a class="btn btn-outline-success" href="{{ path('actor_index') }}">Back to list</a>
+            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
+        </div>
+        {{ include('actor/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

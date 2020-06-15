@@ -14,19 +14,23 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ program.title }}</h5>
                         <p class="card-text">{{ program.category.name }}</p>
-                        <div>
-                            <a class="btn h-100"
-                               href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
-                        </div>
+                    </div>
+                    <div class="bg bg-success">
+                        <a class="btn h-100"
+                           href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
                     </div>
                 </div>
             </div>
+
         {% else %}
             Aucune Série trouvée.
         {% endfor %}
     </div>
-    <a class="btn btn-success" href="{{ path('wild_home') }}">
-        Retour
-    </a>
+
+    <div class="d-flex justify-content-center pb-5">
+        <a class="btn btn-outline-success" href="{{ path('wild_home') }}">
+            Back to Menu
+        </a>
+    </div>
 
 {% endblock %}

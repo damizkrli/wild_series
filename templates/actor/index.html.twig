@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="container">
+
         <h2 class="mt-5 mb-5">Your Favourite Actors</h2>
         <div class="row">
             <table class="table col-6">
@@ -12,8 +13,14 @@
                     <tr>
                         <td>{{ actor.name }}</td>
                         <td>
-                            <a class="btn btn-outline-success" href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
-                            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
+                            <div class="container-fluid">
+                                <div class="row justify-content-center">
+                                    <a class="btn btn-outline-success" href="{{ path('actor_show', {'slug': actor.slug}) }}">Show</a>
+                                    <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
+                                    <a class="btn btn-outline-success ml-5" href="{{ path('actor_delete', {'slug': actor.slug}) }}">Delete</a>
+                                </div>
+                            </div>
+
                         </td>
                     </tr>
                 {% else %}
@@ -32,7 +39,7 @@
 
     <div class="container">
         <div class="row p-5 justify-content-center ">
-            <a class="btn btn-outline-success href="{{ path('actor_new') }}">Create new</a>
+            <a class="btn btn-outline-success" href="{{ path('actor_new') }}">New Actor</a>
             <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back To Menu</a>
         </div>
     </div>

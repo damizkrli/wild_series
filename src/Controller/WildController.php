@@ -53,7 +53,7 @@ class WildController extends AbstractController
     /**
      *
      * @param string $slug
-     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
+     * @Route("/show/{slug<^[a-zA-Z-]+[0-9]*$>}", defaults={"slug" = null}, name="show")
      * @return Response
      *
      */
@@ -111,7 +111,7 @@ class WildController extends AbstractController
 
     /**
      * @param string $slug
-     * @Route("/program/{slug<^[a-zA-Z-]+$>}", name="show_program")
+     * @Route("/program/{slug<^[a-zA-Z-]+[0-9]*$>}", name="show_program")
      * @return Response
      */
     public function showByProgram(string $slug): Response
@@ -151,7 +151,7 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/wild/{slug<^[a-zA-Z-]+$>}/season/{season_id<^[0-9]+$>}/episode/{episode_id<^[0-9]+$>}",
+     * @Route("/wild/{slug<^[a-zA-Z-]+[0-9]*$>}/season/{season_id<^[0-9]+$>}/episode/{episode_id<^[0-9]+$>}",
      *     name="show_episode")
      * @ParamConverter("episode", options={"mapping":{"episode_id":"id"}})
      * @param int $season_id

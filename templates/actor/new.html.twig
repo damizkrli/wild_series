@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}New Actor{% endblock %}
 
 {% block body %}
@@ -7,5 +8,9 @@
 
     {{ include('actor/_form.html.twig') }}
 
-    <a href="{{ path('actor_index') }}">back to list</a>
+    <div class="container">
+        <div class="row p-5 justify-content-center ">
+            <a class="btn btn-outline-success" href="{{ path('actor_index') }}">back to list</a>
+        </div>
+    </div>
 {% endblock %}

@@ -9,6 +9,25 @@
     <body>
         {% include '_navbar.html.twig' %}
         <div id="main">
+
+            {% for message in app.flashes('create') %}
+                <div class="alert alert-success">
+
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('delete') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% block body %}{% endblock %}
         </div>
         {% include '_footer.html.twig' %}
