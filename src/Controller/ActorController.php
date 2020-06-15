@@ -79,7 +79,7 @@ class ActorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="actor_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="actor_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Actor $actor
      * @param Slugify $slugify
