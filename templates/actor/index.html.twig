@@ -13,7 +13,7 @@
                         <td>{{ actor.name }}</td>
                         <td>
                             <a class="btn btn-outline-success" href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
-                            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                            <a class="btn btn-outline-success ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
                         </td>
                     </tr>
                 {% else %}

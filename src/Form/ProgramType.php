@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\Program;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +22,12 @@ class ProgramType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('slug', TextType::class)
+            ->add('year', IntegerType::class, [
+                'label' => 'year'
+            ])
+            ->add('country', TextType::class, [
+                'label' => 'country'
+            ])
             ->add('title',
                 TextType::class, [
                     'label' => 'Title'
