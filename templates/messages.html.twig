@@ -1,0 +1,18 @@
+{#  Message d'erreur, de création et de suppression  #}
+    {% for message in app.flashes('create') %}
+        <div class="alert alert-success">
+
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('delete') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}

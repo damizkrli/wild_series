@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="" >
-        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
-    </head>
-    <body>
-        {% include '_navbar.html.twig' %}
-        <div id="main">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Wild Series{% endblock %}</title>
+    <link rel="icon" href="">
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+{% include '_navbar.html.twig' %}
+<div id="main">
 
-            {% for message in app.flashes('create') %}
-                <div class="alert alert-success">
+    {% block body %}{% endblock %}
+</div>
 
-                </div>
-            {% endfor %}
+{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
+{% include '_footer.html.twig' %}
+</body>
 
-            {% for message in app.flashes('delete') %}
-                <div class="alert alert-danger">
-                    {{ message }}
-                </div>
-            {% endfor %}
-
-            {% block body %}{% endblock %}
-        </div>
-        {% include '_footer.html.twig' %}
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-    </body>
 </html>
