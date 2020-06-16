@@ -5,6 +5,14 @@ img {
     width: 100%;
 }
 
+main{
+    min-height: 100vh;
+}
+
+.sidebar, .nav ul{
+    background-color: $secondary-color ;
+}
+
 html{
     height: 100%;
 }
@@ -20,7 +28,6 @@ body{
 }
 
 .nav {
-    background-color: $primary-color;
     padding: 15px;
 }
 
