@@ -18,6 +18,7 @@ html{
 }
 
 body{
+    background-color: $secondary-color;
     display:flex;
     flex-direction:column;
     min-height: 100%;
@@ -29,6 +30,10 @@ body{
 
 .nav {
     padding: 15px;
+}
+
+.poster{
+    border-radius: 5px;
 }
 
 h1 {
@@ -45,7 +50,7 @@ a {
 
 a:hover {
     text-decoration: none;
-    color: $secondary-color;
+    color: $light;
     border-radius: 5px;
 }
 
@@ -79,7 +84,6 @@ a:hover {
 }
 
 .footer{
-    background-color: $secondary-color;
     bottom: 0;
     margin-top: auto;
 }
@@ -111,6 +115,10 @@ a:hover {
         outline: 0;
     }
 
+}
+
+.login{
+    border-radius: 5px;
 }
 
 .btn{

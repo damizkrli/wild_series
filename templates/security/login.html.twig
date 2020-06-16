@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <form method="post">
+    <div class="container-fluid">
+        <div class="login row justify-content-center m-5">
+            <form class="p-5" method="post" style="background-color: white" >
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
@@ -36,7 +36,7 @@
                     </div>
 
 
-                <button class="btn btn-outline-success mt-5 col-md-12" type="submit">
+                <button class="btn btn-outline-success mt-5 mb-5 col-md-12" type="submit">
                     Sign in
                 </button>
             </form>

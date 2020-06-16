@@ -2,24 +2,22 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Wild Series{% endblock %}</title>
     <link rel="icon" href="">
     {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
 {% include '_navbar.html.twig' %}
 <div id="main">
-    <div class="container-fluid">
-        <div class="row">
-            {% include '_sidebar.html.twig' %}
-            <div class="col-12 col-sm-9 col-md-9 col-lg-10 py-5 pl-4">
-                {% block body %}{% endblock %}
-            </div>
-        </div>
-    </div>
+
+    {% block body %}{% endblock %}
 </div>
+
 {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
 
+{% include '_footer.html.twig' %}
 </body>
 
 </html>
