@@ -27,18 +27,6 @@ class Comment
      */
     private $rate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Episode::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $episodes;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -64,30 +52,6 @@ class Comment
     public function setRate(int $rate): self
     {
         $this->rate = $rate;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getEpisodes(): ?Episode
-    {
-        return $this->episodes;
-    }
-
-    public function setEpisodes(?Episode $episodes): self
-    {
-        $this->episodes = $episodes;
 
         return $this;
     }
