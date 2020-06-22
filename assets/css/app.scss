@@ -42,7 +42,7 @@ h1 {
 }
 
 a {
-    color: $a-link;
+    color: $light;
     text-decoration: none;
     font-size: $link-size;
     font-family: $text-font;
@@ -63,7 +63,7 @@ a:hover {
 }
 
 .btn{
-    background-color: $primary-color;
+    background-color: $light;
 }
 
 .logo {
@@ -93,28 +93,9 @@ a:hover {
     height: 70px;
 }
 
-.slide{
-    width: 185vh;
-    height: 70vh;
-    margin: 25px;
-    padding-bottom: 25px;
-}
-
 .logo-footer{
     width: 40px;
     height: 40px;
-}
-
-.dropdown-menu{
-    background-color: $secondary-color;
-    color: white;
-    &:target{
-        outline: 0;
-    }
-    &:active{
-        outline: 0;
-    }
-
 }
 
 .login{
@@ -123,15 +104,6 @@ a:hover {
 
 .btn{
     background-color: inherit;
-}
-
-.dropdown-menu{
-    background-color: $secondary-color;
-
-    & .dropdown-item:hover{
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
 }
 
 .image-container {
