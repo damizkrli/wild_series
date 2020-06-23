@@ -4,17 +4,22 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\CommentType;
 use App\Form\ProgramSearchType;
+use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
+use http\Client\Curl\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
@@ -157,16 +162,40 @@ class WildController extends AbstractController
      * @param int $season_id
      * @param Episode $episode
      * @param SeasonRepository $seasonRepository
+     * @param Request $request
+     * @param CommentRepository $commentRepository
+     * @param UserInterface $user
      * @return Response
      */
-    public function showEpisode(int $season_id, Episode $episode, SeasonRepository $seasonRepository): Response
+    public function showEpisode(
+        int $season_id,
+        Episode $episode,
+        SeasonRepository $seasonRepository,
+        Request $request,
+        CommentRepository $commentRepository
+    ): Response
     {
         $season = $seasonRepository->findOneBy(['id' => $season_id]);
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $comment->setAuthor($this->getUser());
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin');
+        }
 
         return $this->render('wild/showOneEpisode.html.twig', [
             'episode' => $episode,
             'season' => $episode->getSeason(),
             'program' => $season->getProgram(),
+            'comments' => $commentRepository->findAll(),
+            'form' => $form->createView()
         ]);
     }
 

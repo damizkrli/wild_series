@@ -4,16 +4,16 @@
     <div class="container">
         {% for episode in episode %}
             <div class="card-body border m-5">
-                <p class="m-5">episode {{ loop.index }}: </p>
+                <p class="m-5">Episode {{ loop.index }}: </p>
                 <p class="card-body">{{ episode.synopsis }}</p>
-                <a class="btn btn-success m-2" href="{{ path('showByEpisode', {'id': episode.id}) }}">Retrouvez le Guide
-                    des
-                    épisodes de la Saison {{ loop.index }}</a>
+                <a class="btn btn-success m-2" href="{{ path('showByEpisode', {'id': episode.id}) }}">Find the Guide
+                    of
+                    episodes of the Season{{ loop.index }}</a>
             </div>
         {% endfor %}
-        <a class="btn btn-success m-2" href="{{ path('wild_home') }}">
-            Retour à l'accueil
+        <a class="btn btn-outline-dark m-2" href="{{ path('wild_home') }}">
+            Back Home
         </a>
-        <a class="btn btn-success m-2" href="{{ path('show_season', {'season_id': season.id}) }}">Retour</a>
+        <a class="btn btn-outline-dark m-2" href="{{ path('show_season', {'season_id': season.id}) }}">Retour</a>
     </div>
 {% endblock %}

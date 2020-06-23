@@ -11,29 +11,47 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ path('wild_home') }}">Home |</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('wild_index') }}">Series |</a>
+                <a class="nav-btn nav-link" href="{{ path('wild_home') }}">
+                    <i class="fas fa-home"></i>
+                    Home |
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('wild_index') }}">
+                    <i class="fas fa-film"></i>
+                    Series |
+                </a>
             </li>
             <li class="nav-item">
                 {% if app.user %}
-                    <li>
-                <a class="nav-link" href="{{ path('admin') }}">Your Space |</a>
+            <li>
+                <a class="nav-btn nav-link" href="{{ path('admin') }}">
+                    <i class="fas fa-portrait"></i>
+                    Your Space |
+                </a>
 
             </li>
             <li>
-                <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                <a class="nav-btn nav-link" href="{{ path('app_logout') }}">
+                    <i class="fas fa-stop"></i>
+                    Logout |
+                </a>
             </li>
-                {% else %}
-                    <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-                {% endif %}
+            {% else %}
+                <a class="nav-btn nav-link" href="{{ path('app_login') }}">
+                    <i class="fas fa-play"></i>
+                    Login |
+                </a>
+            {% endif %}
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
         </form>
     </div>
 </nav>

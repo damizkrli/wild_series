@@ -12,11 +12,11 @@
                 <h1 class="mt-0">{{ program.title }} </h1>
             </a>
             <p>{{ program.synopsis }}</p>
-            <p>Catégorie : {{ program.category.name }}</p>
+            <p>Category : {{ program.category.name }}</p>
         </div>
     </div>
 
-    <a class="btn btn-success" href="{{ path('wild_index') }}">
+    <a class="btn btn-outline-dark" href="{{ path('wild_index') }}">
         Retour à l'accueil
     </a>
 {% endblock %}

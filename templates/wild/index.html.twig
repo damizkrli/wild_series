@@ -6,6 +6,7 @@
 
 {% block body %}
 
+    <h1 class="text-center my-5">Your Series</h1>
     <div class="row row-cols-1 row-cols-md-4 row-cols-sm-3 p-5 m-0">
         {% for program in programs %}
             <div class="col mb-3">
@@ -15,21 +16,21 @@
                         <h5 class="card-title">{{ program.title }}</h5>
                         <p class="card-text">{{ program.category.name }}</p>
                     </div>
-                    <div class="bg bg-success">
-                        <a class="btn bg-dark h-100"
+                    <div class="guide-menu">
+                        <a class="btn-guide btn-outline-dark"
                            href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Guide</a>
                     </div>
                 </div>
             </div>
 
         {% else %}
-            Aucune Série trouvée.
+            No Series found.
         {% endfor %}
     </div>
 
     <div class="d-flex justify-content-center pb-5">
-        <a class="btn btn-outline-success" href="{{ path('wild_home') }}">
-            Back to Menu
+        <a class="btn btn-outline-dark" href="{{ path('wild_home') }}">
+            Back to Home
         </a>
     </div>
 

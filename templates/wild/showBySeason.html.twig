@@ -8,14 +8,14 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body 100-vh">
                         <h6><a href="">Episode {{ loop.index }}</a></h6>
-                        <h5 class="card-title">Saison {{ episode.number }}</h5>
+                        <h5 class="card-title">Season {{ episode.number }}</h5>
                         <p class="card-text">{{ episode.synopsis }}</p>
                     </div>
-                    <a href="{{ path('show_episode', {'slug': program.title | replace ({' ': '-'}), 'season_id' : season.id, 'episode_id': episode.id,}) }}" class="btn btn-sm btn-primary">Voir le détail</a>
+                    <a href="{{ path('show_episode', {'slug': program.title | replace ({' ': '-'}), 'season_id' : season.id, 'episode_id': episode.id,}) }}" class="btn btn-sm btn-primary">See details</a>
                 </div>
             {% endfor %}
         </div>
-        <a class="btn btn-success m-2" href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Retour</a>
+        <a class="btn btn-outline-dark m-2" href="{{ path('show_program',{'slug': program.title | replace({' ':'-'})}) }}">Back</a>
     </div>
 
 

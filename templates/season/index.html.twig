@@ -14,10 +14,10 @@
                         <td>{{ season.year }}</td>
                         <td>{{ season.description }}</td>
                         <td>
-                            <a class="btn btn-outline-success"
-                               href="{{ path('season_show', {'id': season.id}) }}">show</a>
-                            <a class="btn btn-outline-success"
-                               href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
+                            <a class="btn btn-outline-dark"
+                               href="{{ path('season_show', {'id': season.id}) }}">Show</a>
+                            <a class="btn btn-outline-dark"
+                               href="{{ path('season_edit', {'id': season.id}) }}">Edit</a>
                         </td>
                     </tr>
                 {% else %}
@@ -31,8 +31,8 @@
     </div>
     <div class="container">
         <div class="row p-5 justify-content-center ">
-            <a class="btn btn-outline-success" href="{{ path('season_new') }}">New Season</a>
-            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back To Menu</a>
+            <a class="btn btn-outline-dark" href="{{ path('season_new') }}">New Season</a>
+            <a class="btn btn-outline-dark ml-5" href="{{ path('admin') }}">Back To Menu</a>
         </div>
     </div>
 

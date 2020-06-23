@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('season_index') }}">back to list</a>
+    <a class="btn btn-outline-dark m-5" href="{{ path('season_index') }}">Back to list</a>
 
-    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
+    <a class="btn btn-outline-dark m-5" href="{{ path('season_edit', {'id': season.id}) }}">Edit</a>
 
     {{ include('season/_delete_form.html.twig') }}
 {% endblock %}
