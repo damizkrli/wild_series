@@ -4,9 +4,9 @@
 
 {% block body %}
     <div class="container">
-        <h2 class="mt-5 mb-5">Episode index</h2>
+        <h1 class="mt-5 mb-5 text-center">Episodes</h1>
         <div class="row">
-            <table class="table col-6">
+            <table class="table col-12">
                 <tbody>
                 {% for episode in episodes %}
                     <tr>
@@ -16,10 +16,8 @@
                         <td>
                             <div class="container">
                                 <div class="row">
-                                    <a class="btn btn-outline-success col-md-2"
-                                       href="{{ path('episode_show', {'slug': episode.slug}) }}">show</a>
-                                    <a class="btn btn-outline-success"
-                                       href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+                                    <a class="btn btn-outline-dark"
+                                       href="{{ path('episode_edit', {'slug': episode.slug}) }}">Edit</a>
                                 </div>
                             </div>
                         </td>
@@ -35,8 +33,8 @@
     </div>
     <div class="container">
         <div class="row p-5 justify-content-center ">
-            <a class="btn btn-outline-success" href="{{ path('episode_new') }}">New Episode</a>
-            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back</a>
+            <a class="btn btn-outline-dark" href="{{ path('episode_new') }}">New Episode</a>
+            <a class="btn btn-outline-dark ml-5" href="{{ path('admin') }}">Back</a>
         </div>
     </div>
 {% endblock %}

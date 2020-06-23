@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block title %}Edit Program{% endblock %}
 
 {% block body %}
@@ -12,11 +10,10 @@
                 <img id="img" src="" alt="image non disponible">
             </div>
 
-
             <div class="col-md-8">
                 {{ include('program/_form.html.twig', {'button_label': 'Update'}) }}
 
-                <a href="{{ path('program_index') }}">back to list</a>
+                <a class="btn btn-outline-dark m-5" href="{{ path('program_index') }}">Back to list</a>
 
                 {{ include('program/_delete_form.html.twig') }}
             </div>

@@ -5,23 +5,35 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">{{ program.title }}</h1>
+    <h1 class="text-center my-5">{{ program.title }}</h1>
 
-    <div class="container-fluid ">
-        <div class="row-cols-1">
-            <div class="card" style="width: 18rem;">
+        <div class="col-10 mx-auto">
+            <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Season :{{ season.number }}</li>
-                    <li class="list-group-item">Release :{{ season.year }}</li>
-                    <li class="list-group-item">Episode :{{ episode.number }}</li>
-                    <li class="list-group-item">Category :{{ program.category.name }}</li>
+                    <li class="list-group-item">Season : {{ season.number }}</li>
+                    <li class="list-group-item">Release : {{ season.year }}</li>
+                    <li class="list-group-item">Episode : {{ episode.number }}</li>
+                    <li class="list-group-item">Category : {{ program.category.name }}</li>
                 </ul>
                 <div class="card-body">
                     <h5 class="card-title">{{ episode.title }}</h5>
                     <p class="card-text">{{ episode.synopsis }}</p>
                 </div>
+                <div class="card-body">
+                    {% for comment in comments %}
+                        <p>Added by : {{ comment.author.email }}</p>
+                        <p>Your comment : {{ comment.comment }}</p>
+                        <p>Your rate : {{ comment.rate }}</p>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
+
+        {% if app.user %}
+            {% include ('comment/_form.html.twig') %}
+        {% endif %}
+
     </div>
-    <a class="btn btn-success m-2" href="">Retour</a>
+
+    <a class="btn btn-outline-dark m-2"
+       href="{{ path('show_episode', {'slug': program.title | replace ({' ': '-'}), 'season_id' : season.id, 'episode_id': episode.id,}) }}">Back</a>
 {% endblock %}

@@ -12,10 +12,8 @@
                     <tr>
                         <td>{{ category.name }}</td>
                         <td>
-                            <a class="btn btn-outline-success"
-                               href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                            <a class="btn btn-outline-success ml-5"
-                               href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                            <a class="btn btn-outline-dark ml-5"
+                               href="{{ path('category_edit', {'id': category.id}) }}">Edit</a>
                         </td>
                     </tr>
                 {% else %}
@@ -30,8 +28,8 @@
 
     <div class="container">
         <div class="row p-5 justify-content-center ">
-            <a class="btn btn-outline-success" href="{{ path('category_new') }}">New Cateorgy</a>
-            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back</a>
+            <a class="btn btn-outline-dark" href="{{ path('category_new') }}">New Cateorgy</a>
+            <a class="btn btn-outline-dark ml-5" href="{{ path('admin') }}">Back</a>
         </div>
     </div>
 

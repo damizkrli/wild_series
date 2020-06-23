@@ -154,4 +154,11 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
 }

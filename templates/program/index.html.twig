@@ -15,11 +15,11 @@
                         <td>
                             <img style="width: 100px" src="{{ program.poster }}" alt="{{ program.title }}">
                         </td>
-                        <td>
+                        <td class="justify-content-center">
                             <p>{{ program.title }}</p>
                             <p>{{ program.country }}</p>
                             <p>{{ program.year }}</p>
-                            <a class="btn btn-outline-success"
+                            <a class="btn btn-outline-dark"
                                href="{{ path('program_edit', {'slug': program.slug}) }}">Edit</a>
                             {{ include('program/_delete_form.html.twig') }}
                     </tr>
@@ -35,8 +35,8 @@
 
     <div class="container">
         <div class="row p-5 justify-content-center ">
-            <a class="btn btn-outline-success" href="{{ path('program_new') }}">New Program</a>
-            <a class="btn btn-outline-success ml-5" href="{{ path('admin') }}">Back To Menu</a>
+            <a class="btn btn-outline-dark" href="{{ path('program_new') }}">New Program</a>
+            <a class="btn btn-outline-dark ml-5" href="{{ path('admin') }}">Back To Menu</a>
         </div>
     </div>
 {% endblock %}
