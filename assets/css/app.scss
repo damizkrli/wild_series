@@ -27,7 +27,7 @@ html{
 }
 
 body{
-    background-color: $secondary-color;
+    background-color: $light;
     display:flex;
     flex-direction:column;
     min-height: 100%;
@@ -54,6 +54,7 @@ a {
     text-decoration: none;
     font-size: $link-size;
     font-family: $text-font;
+    transition: all 0.3s ease;
 }
 
 a:hover {
@@ -62,7 +63,6 @@ a:hover {
     text-decoration: none;
     border-radius: 5px;
 }
-
 
 .card-body{
     background-color: $secondary-color;
@@ -91,6 +91,7 @@ a:hover {
 .navbar {
     background-color: $secondary-color;
     height: 75px;
+    box-shadow: 0 0 5px;
 }
 
 .footer{
