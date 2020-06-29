@@ -1,5 +1,6 @@
 @import "vars";
 @import "pagination";
+@import "not_found";
 
 img {
     width: 100%;
@@ -54,15 +55,34 @@ a {
     text-decoration: none;
     font-size: $link-size;
     font-family: $text-font;
-}
-
-a:hover {
-    background-color: $light;
     color: $light;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
+
+nav .nav-link{
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: all ease-in-out .3s;
+    z-index: 10;
+    &::before {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        background-color: $light;
+        top: 100%;
+        width: 200px;
+        height: 100px;
+        transition: all ease-in-out .1s;
+        z-index: -1;
+        right: 0;
+    }
+}
+
+.nav-item:hover .nav-link::before{
+    top: 0;
+}
 
 .card-body{
     background-color: $secondary-color;

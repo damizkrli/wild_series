@@ -24,9 +24,10 @@
                             {{ include('program/_delete_form.html.twig') }}
                     </tr>
                 {% else %}
-                    <tr>
-                        <td colspan="7">no records found</td>
-                    </tr>
+                    <div id="wrapper">
+                        <h1 class="glitch" data-text="Not found">Not found</h1>
+                        <span class="sub">Nothing Here</span>
+                    </div>
                 {% endfor %}
                 </tbody>
             </table>
