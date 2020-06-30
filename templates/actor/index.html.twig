@@ -3,9 +3,9 @@
 {% block title %}Actor index{% endblock %}
 
 {% block body %}
-    <div class="container">
 
-        <h2 class="mt-5 mb-5">Your Favourite Actors</h2>
+    <h2 class="mt-5 mb-5">Your Favourite Actors</h2>
+    <div class="container">
         <div class="row">
             <table class="table col-6">
                 <tbody>
@@ -15,17 +15,20 @@
                         <td>
                             <div class="container-fluid">
                                 <div class="row justify-content-center">
-                                    <a class="btn btn-outline-dark ml-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
-                                    <a class="btn btn-outline-dark ml-5" href="{{ path('actor_delete', {'slug': actor.slug}) }}">Delete</a>
+                                    <a class="btn btn-outline-dark ml-5"
+                                       href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
+                                    <a class="btn btn-outline-dark ml-5"
+                                       href="{{ path('actor_delete', {'slug': actor.slug}) }}">Delete</a>
                                 </div>
                             </div>
 
                         </td>
                     </tr>
                 {% else %}
-                    <tr>
-                        <td colspan="3">no records found</td>
-                    </tr>
+                    <div id="wrapper">
+                        <h1 class="glitch" data-text="Not found">Not found</h1>
+                        <span class="sub">Nothing Here</span>
+                    </div>
                 {% endfor %}
                 </tbody>
             </table>

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Episode;
+use App\Entity\Season;
 use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -70,6 +72,9 @@ class CommentController extends AbstractController
 
     /**
      * @Route("/{id}", name="comment_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
      */
     public function delete(Request $request, Comment $comment): Response
     {
@@ -78,7 +83,6 @@ class CommentController extends AbstractController
             $entityManager->remove($comment);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('wild_index');
     }
 }

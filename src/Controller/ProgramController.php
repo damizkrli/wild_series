@@ -14,6 +14,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/program")
@@ -96,6 +97,10 @@ class ProgramController extends AbstractController
      * @param Slugify $slugify
      * @param MessagesFlash $messagesFlash
      * @return Response
+     * Will throw a normal AccessDeniedException with a 403 status code
+     * @isGranted("ROLE_ADMIN", message="No Way, Get Out ... Please !")
+     * Will Throw on HTTPException with a 404 status code
+     * @isGranted("ROLE_ADMIN", statusCode=404, message="PAGE NOT FOUND")
      */
     public function edit(
         Request $request,

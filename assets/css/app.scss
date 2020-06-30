@@ -1,5 +1,6 @@
 @import "vars";
 @import "pagination";
+@import "not_found";
 
 img {
     width: 100%;
@@ -9,8 +10,9 @@ main{
     min-height: 100vh;
 }
 
-.sidebar, .nav ul{
+.nav ul{
     background-color: $secondary-color ;
+    box-shadow: 0 0 5px black;
 }
 
 .btn-guide{
@@ -43,26 +45,52 @@ body{
 
 .poster{
     border-radius: 5px;
+    box-shadow: 0 0 5px black;
 }
 
-h1 {
+.blind-mode {
     font-family: $title-font;
     font-size: $principal-font;
+    mix-blend-mode: lighten;
 }
 
 a {
     text-decoration: none;
     font-size: $link-size;
     font-family: $text-font;
-}
-
-a:hover {
-    background-color: $light;
     color: $light;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
+
+nav .nav-link{
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: all ease-in-out .3s;
+    z-index: 10;
+    &::before {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        background-color: $light;
+        top: 100%;
+        width: 200px;
+        height: 100px;
+        transition: all ease-in-out .2s;
+        z-index: -1;
+        right: 0;
+    }
+}
+
+.nav-item:hover .nav-link::before{
+    top: 0;
+}
+
+.home-title{
+    -webkit-text-stroke: 2px $light;
+    border: 2px;
+}
 
 .card-body{
     background-color: $secondary-color;

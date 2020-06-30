@@ -7,26 +7,29 @@
 {% block body %}
     <h1 class="text-center my-5">{{ program.title }}</h1>
 
-        <div class="col-10 mx-auto">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Season : {{ season.number }}</li>
-                    <li class="list-group-item">Release : {{ season.year }}</li>
-                    <li class="list-group-item">Episode : {{ episode.number }}</li>
-                    <li class="list-group-item">Category : {{ program.category.name }}</li>
-                </ul>
-                <div class="card-body">
-                    <h5 class="card-title">{{ episode.title }}</h5>
-                    <p class="card-text">{{ episode.synopsis }}</p>
-                </div>
-                <div class="card-body">
-                    {% for comment in comments %}
-                        <p>Added by : {{ comment.author.email }}</p>
-                        <p>Your comment : {{ comment.comment }}</p>
-                        <p>Your rate : {{ comment.rate }}</p>
-                    {% endfor %}
-                </div>
+    <div class="col-10 mx-auto">
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Season : {{ season.number }}</li>
+                <li class="list-group-item">Release : {{ season.year }}</li>
+                <li class="list-group-item">Episode : {{ episode.number }}</li>
+                <li class="list-group-item">Category : {{ program.category.name }}</li>
+            </ul>
+            <div class="card-body">
+                <h5 class="card-title">{{ episode.title }}</h5>
+                <p class="card-text">{{ episode.synopsis }}</p>
             </div>
+            <div class="card-body">
+                {% for comment in comments %}
+                    <p>Added by : {{ comment.author.email }}</p>
+                    <p>Your comment : {{ comment.comment }}</p>
+                    <p>Your rate : {{ comment.rate }}</p>
+                    {% if app.user %}
+                        {% include ('comment/_delete_form.html.twig') %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
 
         {% if app.user %}
             {% include ('comment/_form.html.twig') %}
