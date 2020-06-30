@@ -10,8 +10,9 @@ main{
     min-height: 100vh;
 }
 
-.sidebar, .nav ul{
+.nav ul{
     background-color: $secondary-color ;
+    box-shadow: 0 0 5px black;
 }
 
 .btn-guide{
@@ -44,11 +45,13 @@ body{
 
 .poster{
     border-radius: 5px;
+    box-shadow: 0 0 5px black;
 }
 
-h1 {
+.blind-mode {
     font-family: $title-font;
     font-size: $principal-font;
+    mix-blend-mode: lighten;
 }
 
 a {
@@ -74,7 +77,7 @@ nav .nav-link{
         top: 100%;
         width: 200px;
         height: 100px;
-        transition: all ease-in-out .1s;
+        transition: all ease-in-out .2s;
         z-index: -1;
         right: 0;
     }
@@ -82,6 +85,11 @@ nav .nav-link{
 
 .nav-item:hover .nav-link::before{
     top: 0;
+}
+
+.home-title{
+    -webkit-text-stroke: 2px $light;
+    border: 2px;
 }
 
 .card-body{
