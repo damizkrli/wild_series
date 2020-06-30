@@ -1,25 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episode index{% endblock %}
+{% block title %}Episode{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="mt-5 mb-5 text-center">Episodes</h1>
-        <div class="row">
+        <h1 class="m-5 p-5 text-center">Episodes</h1>
+        <div class="row justify-content-center">
             <table class="table col-12">
                 <tbody>
                 {% for episode in episodes %}
                     <tr>
-                        <td>{{ episode.title }}</td>
-                        <td>{{ episode.number }}</td>
-                        <td>{{ episode.synopsis }}</td>
-                        <td>
-                            <div class="container">
-                                <div class="row">
-                                    <a class="btn btn-outline-dark"
-                                       href="{{ path('episode_edit', {'slug': episode.slug}) }}">Edit</a>
-                                </div>
-                            </div>
+                        <td class="justify-content-center">
+                            <p>{{ episode.title }}</p>
+                            <p>Episode number {{ episode.number }}</p>
+                            <p>{{ episode.synopsis }}</p>
+                            <a class="btn btn-outline-dark"
+                               href="{{ path('episode_edit', {'slug': episode.slug}) }}">Edit</a>
+                            <a class="btn btn-outline-dark"
+                               href="{{ path('episode_delete', {'slug': episode.slug}) }}">Delete</a>
                         </td>
                     </tr>
                 {% else %}
