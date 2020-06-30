@@ -1,27 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor index{% endblock %}
+{% block title %}Actor {% endblock %}
 
 {% block body %}
 
-    <h2 class="mt-5 mb-5">Your Favourite Actors</h2>
+    <h1 class="text-center p-5 m-5">Your Favourite Actors</h1>
     <div class="container">
-        <div class="row">
-            <table class="table col-6">
+        <div class="row justify-content-center">
+            <table class="table col-12">
                 <tbody>
                 {% for actor in actors %}
                     <tr>
-                        <td>{{ actor.name }}</td>
                         <td>
-                            <div class="container-fluid">
-                                <div class="row justify-content-center">
-                                    <a class="btn btn-outline-dark ml-5"
-                                       href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
-                                    <a class="btn btn-outline-dark ml-5"
-                                       href="{{ path('actor_delete', {'slug': actor.slug}) }}">Delete</a>
-                                </div>
-                            </div>
-
+                            <p class="text-center">{{ actor.name }}</p>
+                            <a class="btn btn-outline-dark ml-5"
+                               href="{{ path('actor_edit', {'slug': actor.slug}) }}">Edit</a>
+                            <a class="btn btn-outline-dark ml-5"
+                               href="{{ path('actor_delete', {'slug': actor.slug}) }}">Delete</a>
                         </td>
                     </tr>
                 {% else %}

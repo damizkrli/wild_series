@@ -16,10 +16,10 @@ class SeasonType extends AbstractType
             ->add('number')
             ->add('year')
             ->add('description')
-            ->add('programs',
-                SeasonType::class,
-                ['choice_label => title']
-            );
+            ->add('programs', EntityType::class, [
+                'class' => EntityType::class,
+                'choice_label' => 'title'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
