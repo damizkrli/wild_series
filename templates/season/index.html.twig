@@ -1,29 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Season index{% endblock %}
+{% block title %}Season{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2>Season index</h2>
-        <div class="row">
-            <table class="table col-6">
+        <h1 class="text-center m-5 p-5">Season </h1>
+        <div class="row justify-content-center">
+            <table class="table col-12">
                 <tbody>
                 {% for season in seasons %}
                     <tr>
-                        <td>{{ season.number }}</td>
-                        <td>{{ season.year }}</td>
-                        <td>{{ season.description }}</td>
-                        <td>
+                        <td class="justify-content-center">
+                        <p>Season {{ season.number }}</p>
+                        <p>in {{ season.year }}</p>
+                        <p>{{ season.description }}</p>
                             <a class="btn btn-outline-dark"
-                               href="{{ path('season_show', {'id': season.id}) }}">Show</a>
+                                                          href="{{ path('season_edit', {'id': season.id}) }}">Edit</a>
                             <a class="btn btn-outline-dark"
-                               href="{{ path('season_edit', {'id': season.id}) }}">Edit</a>
+                               href="{{ path('season_delete', {'id': season.id}) }}">Delete</a>
                         </td>
                     </tr>
                 {% else %}
-                    <tr>
-                        <td colspan="5">no records found</td>
-                    </tr>
+                    <div id="wrapper">
+                        <h1 class="glitch" data-text="Not found">Not found</h1>
+                        <span class="sub">Nothing Here</span>
+                    </div>
                 {% endfor %}
                 </tbody>
             </table>

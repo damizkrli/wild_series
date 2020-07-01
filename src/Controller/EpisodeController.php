@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/episode")
@@ -32,6 +33,8 @@ class EpisodeController extends AbstractController
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_SUBSCRIBER")
      */
     public function new(Request $request): Response
     {
@@ -73,6 +76,8 @@ class EpisodeController extends AbstractController
      * @param Episode $episode
      * @param Slugify $slugify
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_SUBSCRIBER")
      */
     public function edit(Request $request, Episode $episode, Slugify $slugify): Response
     {
@@ -97,6 +102,8 @@ class EpisodeController extends AbstractController
      * @param Request $request
      * @param Episode $episode
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_SUBSCRIBER")
      */
     public function delete(Request $request, Episode $episode): Response
     {

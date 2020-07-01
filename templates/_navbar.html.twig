@@ -14,35 +14,64 @@
             <li class="nav-item">
                 <a class="nav-btn nav-link" href="{{ path('wild_home') }}">
                     <i class="fas fa-home"></i>
-                    Home |
+                    Home
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-btn nav-link" href="{{ path('wild_index') }}">
                     <i class="fas fa-film"></i>
-                    Series |
+                    Series
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('actor_index') }}">
+                    <i class="fas fa-user-friends"></i>
+                    Actor
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('program_index') }}">
+                    <i class="fas fa-tv"></i>
+                    Program
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('episode_index') }}">
+                    <i class="fas fa-image"></i>
+                    Episode
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('season_index') }}">
+                    <i class="fab fa-youtube"></i>
+                    Season
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-btn nav-link" href="{{ path('category_index') }}">
+                    <i class="far fa-folder-open"></i>
+                    Category
                 </a>
             </li>
             <li class="nav-item">
                 {% if app.user %}
-            <li>
+            <li class="nav-item">
                 <a class="nav-btn nav-link" href="{{ path('admin') }}">
                     <i class="fas fa-portrait"></i>
-                    Your Space |
+                    Your Space
                 </a>
-
             </li>
-            <li>
+            <li class="nav-item">
                 <a class="nav-btn nav-link" href="{{ path('app_logout') }}">
                     <i class="fas fa-stop"></i>
-                    Logout |
+                    Logout
                 </a>
             </li>
             {% else %}
                 <a class="nav-btn nav-link" href="{{ path('app_login') }}">
                     <i class="fas fa-play"></i>
-                    Login |
+                    Login
                 </a>
             {% endif %}
             </li>

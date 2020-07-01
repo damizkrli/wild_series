@@ -3,6 +3,10 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    role_hierarchy:
+        ROLE_SUBSCRIBER: ROLE_USER
+        ROLE_ADMIN:  ROLE_SUBSCRIBER
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -34,8 +38,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/index, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/series, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/season, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/episode, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/actor, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/program_edit, roles: ROLE_ADMIN }
 
 

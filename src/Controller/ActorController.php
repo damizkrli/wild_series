@@ -12,9 +12,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/actor")
+
  */
 class ActorController extends AbstractController
 {
@@ -46,6 +49,8 @@ class ActorController extends AbstractController
      * @param Slugify $slugify
      * @param MessagesFlash $messagesFlash
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_USER")
      */
     public function new(
         Request $request,
@@ -77,6 +82,8 @@ class ActorController extends AbstractController
      * @Route("/{slug<[a-zA-Z-]+>}", name="actor_show", methods={"GET"})
      * @param Actor $actor
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_USER")
      */
     public function show(Actor $actor): Response
     {
@@ -92,6 +99,8 @@ class ActorController extends AbstractController
      * @param Slugify $slugify
      * @param MessagesFlash $messagesFlash
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_USER")
      */
     public function edit(
         Request $request,
@@ -123,6 +132,8 @@ class ActorController extends AbstractController
      * @param Actor $actor
      * @param MessagesFlash $messagesFlash
      * @return Response
+     * @isGranted("ROLE_ADMIN")
+     * @isGranted("ROLE_USER")
      */
     public function delete(
         Request $request,
