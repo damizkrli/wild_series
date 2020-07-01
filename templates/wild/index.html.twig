@@ -7,11 +7,11 @@
 {% block body %}
 
     <h1 class="text-center my-5">Your Series</h1>
-    <div class="row row-cols-1 row-cols-md-4 row-cols-sm-3 p-5 m-0">
+    <div class="col-6 p-5 m-0">
         {% for program in programs %}
-            <div class="col mb-3">
+            <img src="{{ program.poster }}" class="series card-img-top img-circle" alt="{{ program.title }}">
+            <div class="col-6 mb-3">
                 <div class="card h-100">
-                    <img src="{{ program.poster }}" class="card-img-top img-circle" alt="{{ program.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ program.title }}</h5>
                         <p class="card-text">{{ program.category.name }}</p>
